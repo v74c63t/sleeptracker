@@ -71,3 +71,4 @@ testem.log
 Thumbs.db
 
 sleeptracker/node_modules/
+sleeptracker/.angular/
