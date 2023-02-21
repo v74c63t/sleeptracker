@@ -18,3 +18,25 @@
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </ion-content>
+
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-router-outlet></ion-router-outlet>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon name="home"></ion-icon>
+          Home
+        </ion-tab-button>
+        <ion-tab-button tab="log">
+          <ion-icon name="stopwatch"></ion-icon>
+          Log
+        </ion-tab-button>
+        <ion-tab-button tab="view">
+          <ion-icon name="today"></ion-icon>
+          View
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>
