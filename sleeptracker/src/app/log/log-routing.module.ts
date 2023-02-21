@@ -7,6 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: LogPage
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('src/app/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'log',
+    loadChildren: () => import('./log.module').then( m => m.LogPageModule)
+  },
+  {
+    path: 'view',
+    loadChildren: () => import('src/app/view/view.module').then( m => m.ViewPageModule)
   }
 ];
 
