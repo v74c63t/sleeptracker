@@ -1,4 +1,4 @@
---Readme document for *author(s)*, *email(s)*, *UCI id(s)*--
+--Readme document for Vanessa Tang, Jaime Park *author(s)*, vanesst5@uci.edu, jaimesp@uci.edu *email(s)*, 86856328, 40361959 *UCI id(s)*--
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
