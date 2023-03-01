@@ -5,10 +5,18 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
-    <ion-item><ion-button>Log Sleepiness</ion-button></ion-item>
-    <ion-item><ion-button>Log Overnight Sleep</ion-button></ion-item>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block">Log Sleepiness</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block">Log Overnight Sleep</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer [translucent]="true">
