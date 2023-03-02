@@ -19,6 +19,11 @@ export class LogPage implements OnInit {
   sleepinessDate:string = this.resetDate;
   addedDate:boolean = false;
   sleepData:SleepData[] = [];
+  overnightStart:string = this.resetDate;
+  overnightEnd:string = this.resetDate;
+  fullStart:boolean = false;
+  fullEnd:boolean = false;
+  overnightLog:boolean = false;
   
   constructor() { }
 
@@ -39,6 +44,8 @@ export class LogPage implements OnInit {
   resetCalDate(){
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
     this.sleepinessDate = this.resetDate;
+    this.overnightStart = this.resetDate;
+    this.overnightEnd = this.resetDate;
   }
   overnightClick() {
     this.logOvernightSleep = !this.logOvernightSleep;
@@ -55,6 +62,15 @@ export class LogPage implements OnInit {
     console.log(this.data.summaryString());
     console.log(this.sleepData.length);
     console.log(this.sleepinessDate);
+  }
+  logFull(){
+    this.fullStart = !this.fullStart;
+  }
+  logFullEnd() {
+    this.fullEnd = !this.fullEnd;
+  }
+  startLog() {
+    this.overnightLog = !this.overnightLog;
   }
   getSleepData(){
     return this.sleepData;

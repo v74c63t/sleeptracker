@@ -64,9 +64,41 @@
         <ion-button expand="block" (click) = "overnightClick()">Log Overnight Sleep</ion-button>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="logOvernightSleep">
-      LOG OVERNIGHT SLEEP (TEMPORARY)
-    </ion-row>
+    <div *ngIf="logOvernightSleep">
+      <ion-row>LOG OVERNIGHT SLEEP (TEMPORARY)</ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col><ion-button (click)="logFull()">Log Full</ion-button></ion-col>
+        <ion-col><ion-button (click)="startLog()">Start Log</ion-button></ion-col>
+      </ion-row>
+      <div *ngIf="fullStart">
+        <ion-row>
+          <ion-item>
+            <ion-datetime #datetime [(ngModel)] = "overnightStart">
+              <span slot="title">Enter Log Start Date and Time</span>
+              <ion-buttons slot="buttons">
+                <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalDate()">Reset</ion-button>
+                <ion-button color="primary" (click)="datetime.cancel(); logFull()">Cancel</ion-button>
+                <ion-button color="primary" (click)="datetime.confirm(); logFullEnd(); logFull()">Confirm</ion-button>
+              </ion-buttons>
+            </ion-datetime>
+          </ion-item>
+        </ion-row>
+      </div>
+      <div *ngIf="fullEnd">
+        <ion-row>
+          <ion-item>
+            <ion-datetime #datetime [(ngModel)] = "overnightStart">
+              <span slot="title">Enter Log End Date and Time</span>
+              <ion-buttons slot="buttons">
+                <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalDate()">Reset</ion-button>
+                <ion-button color="primary" (click)="datetime.cancel(); logFullEnd(); logFull()">Cancel</ion-button>
+                <ion-button color="primary" (click)="datetime.confirm()">Confirm</ion-button>
+              </ion-buttons>
+            </ion-datetime>
+          </ion-item>
+        </ion-row>
+      </div>
+    </div>
   </ion-grid>
 </ion-content>
 
