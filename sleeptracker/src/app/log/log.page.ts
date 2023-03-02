@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
@@ -37,6 +37,7 @@ export class LogPage implements OnInit {
     this.resetCalDate();
   }
   resetCalDate(){
+    this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
     this.sleepinessDate = this.resetDate;
   }
   overnightClick() {
@@ -48,5 +49,8 @@ export class LogPage implements OnInit {
     console.log(this.data.summaryString());
     console.log(this.sleepData.length);
     console.log(this.sleepinessDate);
+  }
+  getSleepData(){
+    return this.sleepData;
   }
 }
