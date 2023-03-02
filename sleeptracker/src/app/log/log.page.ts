@@ -43,10 +43,10 @@ export class LogPage implements OnInit {
   overnightClick() {
     this.logOvernightSleep = !this.logOvernightSleep;
   }
-  createData() {
+  createSleepinessData() {
     this.data = new StanfordSleepinessData(this.sleepinessRangeVal, new Date(this.sleepinessDate)); 
   }
-  deleteData() {
+  deleteSleepinessData() {
     this.data = new SleepData;
   }
   sleepiness() {

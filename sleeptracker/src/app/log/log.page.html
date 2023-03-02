@@ -39,7 +39,7 @@
       <ion-row class="ion-text-center">
         <ion-col><ion-button color="danger" (click) = "sleepinessCancel()">Cancel</ion-button></ion-col>
         <!-- <ion-col><ion-button color="success" (click) = "sleepinessPopoverTrigger()">Log</ion-button></ion-col> -->
-        <ion-col><ion-button color="success" id="open-modal" (click) = "createData()">Log</ion-button></ion-col>
+        <ion-col><ion-button color="success" id="open-modal" (click) = "createSleepinessData()">Log</ion-button></ion-col>
         <ion-modal #modal trigger="open-modal" >
           <ng-template>
             <ion-content>
@@ -51,7 +51,7 @@
                 <ion-card-content>
                   Summary: {{data.summaryString()}}
                 </ion-card-content>
-                <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
+                <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteSleepinessData()">Cancel</ion-button>
                 <ion-button fill="clear" color="success" (click)="modal.dismiss(); sleepiness(); sleepinessCancel()">Confirm</ion-button>
               </ion-card>
             </ion-content>
