@@ -12,7 +12,8 @@
       </ion-col>
     </ion-row>
     <div *ngIf="logSleepiness">
-      <ion-row>LOG SLEEPINESS</ion-row>
+      <ion-row>LOG SLEEPINESS (TEMPORARY)</ion-row>
+      <ion-row>Choose a value based on how you feel</ion-row>
       <ion-row>
         <ion-range [ticks] = "true" [snaps] = "true" [pin] = "true" min = "1" max = "7"[(ngModel)] = "sleepinessRangeVal"></ion-range>
       </ion-row>
@@ -64,7 +65,7 @@
       </ion-col>
     </ion-row>
     <ion-row *ngIf="logOvernightSleep">
-      LOG OVERNIGHT SLEEP
+      LOG OVERNIGHT SLEEP (TEMPORARY)
     </ion-row>
   </ion-grid>
 </ion-content>
