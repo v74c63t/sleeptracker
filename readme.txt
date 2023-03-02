@@ -1,4 +1,4 @@
---Readme document for Vanessa Tang, Jaime Park *author(s)*, vanesst5@uci.edu, jaimesp@uci.edu *email(s)*, 86856328, 40361959 *UCI id(s)*--
+--Readme document for Vanessa Tang, Jaime Park, vanesst5@uci.edu, jaimesp@uci.edu, 86856328, 40361959--
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
@@ -12,10 +12,12 @@
 - */2 A readme and demo video which explains how these features were implemented and their design rationale
 
 2. How long, in hours, did it take you to complete this assignment?
-
+~8 havent kept track
 
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
+https://ionicframework.com/docs/api/range
+https://ionicframework.com/docs/api/grid
 
 
 
