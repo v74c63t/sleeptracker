@@ -43,9 +43,15 @@ export class LogPage implements OnInit {
   overnightClick() {
     this.logOvernightSleep = !this.logOvernightSleep;
   }
+  createData() {
+    this.data = new StanfordSleepinessData(this.sleepinessRangeVal, new Date(this.sleepinessDate)); 
+  }
+  deleteData() {
+    this.data = new SleepData;
+  }
   sleepiness() {
-    this.data = new StanfordSleepinessData(this.sleepinessRangeVal); 
-    this.sleepData.push(new StanfordSleepinessData(this.sleepinessRangeVal, new Date(this.sleepinessDate)));
+    // this.data = new StanfordSleepinessData(this.sleepinessRangeVal); 
+    this.sleepData.push(this.data);
     console.log(this.data.summaryString());
     console.log(this.sleepData.length);
     console.log(this.sleepinessDate);
