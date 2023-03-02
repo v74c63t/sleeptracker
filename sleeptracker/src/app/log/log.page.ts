@@ -13,6 +13,12 @@ export class LogPage implements OnInit {
   logOvernightSleep:boolean = false;
   ScaleValues = StanfordSleepinessData.ScaleValues;
   sleepinessRangeVal:number=1;
+  data:SleepData = new SleepData; // testing purposes will remove later
+  resetDate:string = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+  // convert to PST
+  sleepinessDate:string = this.resetDate;
+  addedDate:boolean = false;
+  sleepData:SleepData[] = [];
   
   constructor() { }
 
@@ -20,8 +26,27 @@ export class LogPage implements OnInit {
   }
   sleepinessClick(){
     this.logSleepiness = !this.logSleepiness;
+    this.reset();
+  }
+  sleepinessCancel(){
+    this.logSleepiness = false;
+    this.reset();
+  }
+  reset(){
+    this.sleepinessRangeVal = 1;
+    this.resetCalDate();
+  }
+  resetCalDate(){
+    this.sleepinessDate = this.resetDate;
   }
   overnightClick() {
     this.logOvernightSleep = !this.logOvernightSleep;
+  }
+  sleepiness() {
+    this.data = new StanfordSleepinessData(this.sleepinessRangeVal); 
+    this.sleepData.push(new StanfordSleepinessData(this.sleepinessRangeVal, new Date(this.sleepinessDate)));
+    console.log(this.data.summaryString());
+    console.log(this.sleepData.length);
+    console.log(this.sleepinessDate);
   }
 }

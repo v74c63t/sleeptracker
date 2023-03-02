@@ -21,6 +21,24 @@
           <span *ngIf="i == sleepinessRangeVal">{{i}}: {{val}}</span>
         </ion-label>
       </ion-row>
+      <ion-row>
+        <ion-item>
+          <!-- <ion-label>Enter date</ion-label> -->
+          <!-- <ion-input placeholder="Enter date"></ion-input> -->
+          <ion-datetime #datetime [(ngModel)] = "sleepinessDate">
+            <span slot="title">Enter Log Date and Time</span>
+            <ion-buttons slot="buttons">
+              <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalDate()">Reset</ion-button>
+              <!-- <ion-button color="primary" (click)="datetime.cancel()">Cancel</ion-button> -->
+              <ion-button color="primary" (click)="datetime.confirm()">Confirm</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ion-item>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col><ion-button color="danger" (click) = "sleepinessCancel()">Cancel</ion-button></ion-col>
+        <ion-col><ion-button color="success" (click) = "sleepiness()">Log</ion-button></ion-col>
+      </ion-row>
     </div>
     <ion-row>
       <ion-col>
