@@ -12,12 +12,12 @@ import { LogPage } from '../log/log.page';
 export class ViewPage implements OnInit {
   data:SleepData[] = [];
 
-  // constructor(private logPage:LogPage) { }
-  constructor(){}
+  constructor(private logPage:LogPage) { }
+  // constructor(){}
 
   ngOnInit() {
-    // this.data = this.logPage.getSleepData();
-    // console.log(this.data);
+    this.data = this.logPage.getSleepData();
+    console.log(this.data);
     //FIGURE OUT HOW TO GET THE DATA
   }
 
