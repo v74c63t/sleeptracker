@@ -46,10 +46,10 @@
               <ion-card>
                 <ion-card-header>
                   <ion-card-title>Log Sleepiness</ion-card-title>
-                  <ion-card-subtitle>Date: {{data.dateString()}}</ion-card-subtitle>
+                  <ion-card-subtitle>DateTime: {{data.dateTimeString()}}</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
-                  Summary: {{data.summaryString()}}
+                  Date: {{data.dateString()}}<br>Summary:{{data.summaryString()}}
                 </ion-card-content>
                 <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
                 <ion-button fill="clear" color="success" (click)="modal.dismiss(); addData(); sleepinessCancel()">Confirm</ion-button>
@@ -98,7 +98,7 @@
           </ion-item>
         </ion-row>
         <ion-row class="ion-text-center">
-          <ion-col><ion-button color="danger" (click) = "overnightClick()">Cancel</ion-button></ion-col>
+          <ion-col><ion-button color="danger" (click) = "overnightClick(); overnightCancel()">Cancel</ion-button></ion-col>
           <ion-col><ion-button color="success" id="open-modal" (click) = "createOvernightData()">Log</ion-button></ion-col>
           <ion-modal #modal trigger="open-modal" >
             <ng-template>
@@ -106,10 +106,10 @@
                 <ion-card>
                   <ion-card-header>
                     <ion-card-title>Log Overnight Sleep</ion-card-title>
-                    <ion-card-subtitle>Date: {{data.dateString()}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{startDateTimeString()}}<br>{{endDateTimeString()}}</ion-card-subtitle>
                   </ion-card-header>
                   <ion-card-content>
-                    Summary: {{data.summaryString()}}
+                    Date: {{data.dateString()}}<br>Summary:{{data.summaryString()}}
                   </ion-card-content>
                   <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
                   <ion-button fill="clear" color="success" (click)="modal.dismiss(); addData(); overnightCancel()">Confirm</ion-button>
