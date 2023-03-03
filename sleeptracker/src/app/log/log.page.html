@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-button href="/home">Home</ion-button>
+    <ion-button href="/view">View</ion-button>
+  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -92,7 +96,7 @@
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalEndDate()">Reset</ion-button>
                 <ion-button color="primary" (click)="datetime.cancel(); logFullEnd(); logFull(); resetCalEndDate()">Cancel</ion-button>
-                <ion-button color="primary" (click)="datetime.confirm(); printDate()">Confirm</ion-button>
+                <ion-button color="primary" (click)="datetime.confirm()">Confirm</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ion-item>
