@@ -102,9 +102,9 @@ export class LogPage implements OnInit {
   endDateTimeString() {
     return this.data.dateTimeString().substring(this.data.dateTimeString().search("\n")+1,);
   }
-  printDate() {
-    console.log(this.overnightEnd);
-  }
+  // printDate() {
+  //   console.log(this.overnightEnd);
+  // }
   getSleepData(){
     return this.sleepData;
   }
