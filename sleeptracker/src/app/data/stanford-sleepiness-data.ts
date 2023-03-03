@@ -16,7 +16,7 @@ export class StanfordSleepinessData extends SleepData {
 	private loggedValue:number;
 
 	constructor(loggedValue:number, loggedAt:Date = new Date()) {
-		super();
+		super("Stanford");
 		this.loggedValue = loggedValue;
 		this.loggedAt = loggedAt;
 	}

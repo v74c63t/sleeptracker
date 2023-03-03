@@ -5,7 +5,7 @@ export class OvernightSleepData extends SleepData {
 	private sleepEnd:Date;
 
 	constructor(sleepStart:Date, sleepEnd:Date) {
-		super();
+		super("Overnight");
 		this.sleepStart = sleepStart;
 		this.sleepEnd = sleepEnd;
 	}
