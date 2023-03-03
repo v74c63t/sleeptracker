@@ -15,8 +15,9 @@ export class ViewPage implements OnInit {
   constructor(){}
 
   ngOnInit() {
-    
+    this.data = JSON.parse(localStorage.getItem('SleepData')||"null");
     //FIGURE OUT HOW TO GET THE DATA
+    console.log(this.data);
   }
 
 }

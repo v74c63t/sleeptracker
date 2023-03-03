@@ -114,6 +114,7 @@ export class LogPage implements OnInit {
     this.sleepData.push(this.data);
     console.log(this.data.summaryString());
     console.log(this.sleepData.length);
+    localStorage.setItem('SleepData', JSON.stringify(this.sleepData))
     // console.log(this.sleepinessDate);
   }
   startDateTimeString() {
