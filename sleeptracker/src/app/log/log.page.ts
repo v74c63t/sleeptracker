@@ -28,6 +28,7 @@ export class LogPage implements OnInit {
   fullStart:boolean = false;
   fullEnd:boolean = false;
   overnightLog:boolean = false;
+  confirmation:boolean = false;
   
   constructor() { }
 
@@ -36,10 +37,12 @@ export class LogPage implements OnInit {
   sleepinessClick(){
     this.logSleepiness = !this.logSleepiness;
     this.resetSleepiness();
+    this.showConfirmation(false);
   }
   sleepinessCancel(){
     this.logSleepiness = false;
     this.resetSleepiness();
+    this.showConfirmation(false);
   }
   resetSleepiness(){
     this.sleepinessRangeVal = 1;
@@ -55,6 +58,7 @@ export class LogPage implements OnInit {
     this.fullEnd = false;
     this.fullStart = false; 
     this.overnightLog = false;
+    this.confirmation = false;
   }
   resetCalStartDate(){
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
@@ -80,11 +84,11 @@ export class LogPage implements OnInit {
   //   console.log(this.sleepData.length);
   //   console.log(this.sleepinessDate);
   // }
-  logFull(){
-    this.fullStart = !this.fullStart;
+  logFull(state:boolean){
+    this.fullStart = state;
   }
-  logFullEnd() {
-    this.fullEnd = !this.fullEnd;
+  logFullEnd(state:boolean) {
+    this.fullEnd = state;
   }
   startLog() {
     this.overnightLog = !this.overnightLog;
@@ -109,6 +113,11 @@ export class LogPage implements OnInit {
   printDate() {
     console.log(this.overnightStart);
     console.log(this.overnightEnd);
+    console.log(this.fullStart);
+    console.log(this.fullEnd);
+  }
+  showConfirmation(state:boolean) {
+    this.confirmation = state;
   }
   getSleepData(){
     return this.sleepData;
