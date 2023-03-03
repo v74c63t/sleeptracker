@@ -96,6 +96,12 @@ export class LogPage implements OnInit {
     console.log(this.sleepData.length);
     // console.log(this.sleepinessDate);
   }
+  startDateTimeString() {
+    return this.data.dateTimeString().substring(0,this.data.dateTimeString().search("\n"))
+  }
+  endDateTimeString() {
+    return this.data.dateTimeString().substring(this.data.dateTimeString().search("\n")+1,);
+  }
   printDate() {
     console.log(this.overnightEnd);
   }
