@@ -29,11 +29,17 @@ export class LogPage implements OnInit {
   fullEnd:boolean = false;
   overnightLog:boolean = false;
   confirmation:boolean = false;
+  startLogTime:string = this.resetDate;
+  started:boolean = false;
+  endLogTime:string = "";
+  endDate:boolean = false;
+  done:boolean = false;
   
   constructor() { }
 
   ngOnInit() {
   }
+  // WILL CONDENSE ALL THIS LATER
   sleepinessClick(){
     this.logSleepiness = !this.logSleepiness;
     this.resetSleepiness();
@@ -59,6 +65,9 @@ export class LogPage implements OnInit {
     this.fullStart = false; 
     this.overnightLog = false;
     this.confirmation = false;
+    this.started = false;
+    this.startLogTime = this.resetDate;
+    this.endLogTime = this.resetDate;
   }
   resetCalStartDate(){
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
@@ -92,11 +101,17 @@ export class LogPage implements OnInit {
   }
   startLog() {
     this.overnightLog = !this.overnightLog;
+    this.started = false;
+    this.endDate = false;
+    this.done = false;
+    this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+    this.startLogTime = this.resetDate;
+    this.endLogTime =this.resetDate;
   }
-  createOvernightData() {
-    console.log(this.overnightStart);
-    console.log(this.overnightEnd);
-    this.data = new OvernightSleepData(new Date(this.overnightStart), new Date(this.overnightEnd));
+  createOvernightData(start:string, end:string) {
+    console.log(start);
+    console.log(end);
+    this.data = new OvernightSleepData(new Date(start), new Date(end));
   }
   addData() {
     this.sleepData.push(this.data);
@@ -118,6 +133,19 @@ export class LogPage implements OnInit {
   }
   showConfirmation(state:boolean) {
     this.confirmation = state;
+  }
+  start() {
+    this.started = true;
+  }
+  end() {
+    this.endLogTime = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+    this.createOvernightData(this.startLogTime, this.endLogTime);
+  }
+  showEndDate() {
+    this.endDate = !this.endDate;
+  }
+  isDone() {
+    this.done = !this.done;
   }
   getSleepData(){
     return this.sleepData;
