@@ -51,8 +51,8 @@
                 <ion-card-content>
                   Summary: {{data.summaryString()}}
                 </ion-card-content>
-                <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteSleepinessData()">Cancel</ion-button>
-                <ion-button fill="clear" color="success" (click)="modal.dismiss(); sleepiness(); sleepinessCancel()">Confirm</ion-button>
+                <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
+                <ion-button fill="clear" color="success" (click)="modal.dismiss(); addData(); sleepinessCancel()">Confirm</ion-button>
               </ion-card>
             </ion-content>
           </ng-template>
@@ -76,7 +76,7 @@
             <ion-datetime #datetime [(ngModel)] = "overnightStart">
               <span slot="title">Enter Log Start Date and Time</span>
               <ion-buttons slot="buttons">
-                <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalDate()">Reset</ion-button>
+                <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalStartDate()">Reset</ion-button>
                 <ion-button color="primary" (click)="datetime.cancel(); logFull()">Cancel</ion-button>
                 <ion-button color="primary" (click)="datetime.confirm(); logFullEnd(); logFull()">Confirm</ion-button>
               </ion-buttons>
@@ -87,15 +87,36 @@
       <div *ngIf="fullEnd">
         <ion-row>
           <ion-item>
-            <ion-datetime #datetime [(ngModel)] = "overnightStart">
+            <ion-datetime #datetime [(ngModel)] = "overnightEnd">
               <span slot="title">Enter Log End Date and Time</span>
               <ion-buttons slot="buttons">
-                <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalDate()">Reset</ion-button>
-                <ion-button color="primary" (click)="datetime.cancel(); logFullEnd(); logFull()">Cancel</ion-button>
-                <ion-button color="primary" (click)="datetime.confirm()">Confirm</ion-button>
+                <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalEndDate()">Reset</ion-button>
+                <ion-button color="primary" (click)="datetime.cancel(); logFullEnd(); logFull(); resetCalEndDate()">Cancel</ion-button>
+                <ion-button color="primary" (click)="datetime.confirm(); printDate()">Confirm</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ion-item>
+        </ion-row>
+        <ion-row class="ion-text-center">
+          <ion-col><ion-button color="danger" (click) = "overnightClick()">Cancel</ion-button></ion-col>
+          <ion-col><ion-button color="success" id="open-modal" (click) = "createOvernightData()">Log</ion-button></ion-col>
+          <ion-modal #modal trigger="open-modal" >
+            <ng-template>
+              <ion-content>
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>Log Overnight Sleep</ion-card-title>
+                    <ion-card-subtitle>Date: {{data.dateString()}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    Summary: {{data.summaryString()}}
+                  </ion-card-content>
+                  <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
+                  <ion-button fill="clear" color="success" (click)="modal.dismiss(); addData(); overnightCancel()">Confirm</ion-button>
+                </ion-card>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
         </ion-row>
       </div>
     </div>
