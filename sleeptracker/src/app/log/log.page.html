@@ -77,12 +77,12 @@
       <div *ngIf="fullStart">
         <ion-row>
           <ion-item>
-            <ion-datetime #datetime [(ngModel)] = "overnightStart">
+            <ion-datetime #datetime [(ngModel)] = "overnightStart" (ionChange)="printDate(); logFull(); logFullEnd()">
               <span slot="title">Enter Log Start Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalStartDate()">Reset</ion-button>
                 <ion-button color="primary" (click)="datetime.cancel(); logFull()">Cancel</ion-button>
-                <ion-button color="primary" (click)="datetime.confirm(); logFullEnd(); logFull()">Confirm</ion-button>
+                <ion-button color="primary" (click)="datetime.confirm()">Confirm</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ion-item>
@@ -91,7 +91,7 @@
       <div *ngIf="fullEnd">
         <ion-row>
           <ion-item>
-            <ion-datetime #datetime [(ngModel)] = "overnightEnd">
+            <ion-datetime #datetime [(ngModel)] = "overnightEnd" (ionChange)="printDate()">
               <span slot="title">Enter Log End Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalEndDate()">Reset</ion-button>

@@ -28,7 +28,7 @@ export class OvernightSleepData extends SleepData {
 	override dateTimeString():string {
 		return "Start: " + this.sleepStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) +
 		" " + this.sleepStart.toLocaleTimeString('en-US') + 
-		"\nEnd: " + this.sleepStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + 
+		"\nEnd: " + this.sleepEnd.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + 
 		" " + this.sleepEnd.toLocaleTimeString('en-US')
 	}
 }
