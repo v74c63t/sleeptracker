@@ -2,16 +2,13 @@ import { Component, OnInit, Output } from '@angular/core';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
-import {Injectable} from '@angular/core';
 
 @Component({
   selector: 'app-log',
   templateUrl: './log.page.html',
   styleUrls: ['./log.page.scss'],
 })
-@Injectable({
-  providedIn: 'root'
-})
+
 export class LogPage implements OnInit {
   logSleepiness:boolean = false;
   logOvernightSleep:boolean = false;
