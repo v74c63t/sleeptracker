@@ -14,6 +14,7 @@
 2. How long, in hours, did it take you to complete this assignment?
 before wed: ~5 havent kept track
 wed: 6-8?
+th: 12?
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 https://ionicframework.com/docs/api/range
