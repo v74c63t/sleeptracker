@@ -110,7 +110,23 @@ export class LogPage implements OnInit {
     console.log(end);
     this.data = new OvernightSleepData(new Date(start), new Date(end));
   }
+  convert(storage:any[]) {
+    for(var i=0; i< storage.length; i++) {
+      if(storage[i].type === "Stanford") {
+        this.sleepData.push(new StanfordSleepinessData(storage[i].loggedValue, new Date(storage[i].loggedAt)));
+      }
+      else if(storage[i].type === "Overnight") {
+        this.sleepData.push(new OvernightSleepData(new Date(storage[i].sleepStart), new Date(storage[i].sleepEnd)));
+      }
+    }
+  }
   addData() {
+    if(this.sleepData.length == 0) {
+      var storage = JSON.parse(localStorage.getItem('SleepData')||"null");
+      if(storage != null) {
+        this.convert(storage);
+      }
+    }
     this.sleepData.push(this.data);
     console.log(this.data.summaryString());
     console.log(this.sleepData.length);
