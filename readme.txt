@@ -15,7 +15,7 @@
 before wed: ~5 havent kept track
 wed: 6-8?
 th: 12?
-fri: 5 hrs
+fri: 7 hrs
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 https://ionicframework.com/docs/api/range
@@ -24,6 +24,9 @@ https://ionicframework.com/docs/api/button
 https://ionicframework.com/docs/api/card
 https://ionicframework.com/docs/api/input
 https://stackoverflow.com/questions/10830357/javascript-toisostring-ignores-timezone-offset
+https://ionicframework.com/docs/api/alert
+https://ionicframework.com/docs/api/modal
+https://ionicframework.com/docs/api/list
 
 
 
