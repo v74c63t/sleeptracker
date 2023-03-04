@@ -3,8 +3,8 @@
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
 */20
-- */3 The ability to log overnight sleep
-- */3 The ability to log sleepiness during the day
+- 3/3 The ability to log overnight sleep
+- 3/3 The ability to log sleepiness during the day
 - */3 The ability to view these two categories of logged data
 - */3 Either using a native device resource or backing up logged data
 - */3 Following good principles of mobile design
@@ -15,6 +15,7 @@
 before wed: ~5 havent kept track
 wed: 6-8?
 th: 12?
+fri: 5 hrs
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 https://ionicframework.com/docs/api/range
