@@ -82,7 +82,8 @@ export class ViewPage implements OnInit {
   }
   async confirmDelete(data:SleepData) {
     const alert = await this.alertController.create({
-      header: 'Logs cannot be recovered once deleted. If you are sure press delete again to delete the log after closing the alert.',
+      header: 'Are you sure?',
+      message: 'Logs cannot be recovered once deleted. If you are sure press delete again after closing the alert.',
       buttons: [
         {
           text: 'Ok',
@@ -94,6 +95,27 @@ export class ViewPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     if(role == 'delete') {
       this.delete = true; 
+    }
+  }
+  async confirmClear() {
+    const alert = await this.alertController.create({
+      header: 'Are you sure?',
+      message: 'All logs will be removed and logs cannot be recovered once deleted. If you are sure press clear, if not simply close the alert.',
+      buttons: [
+        {
+          text: 'Clear',
+          role: 'clear',
+        },
+        {
+          text: 'Close',
+          role: 'close'
+        }
+      ]
+    });
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    if(role == 'clear') {
+      this.clear(); 
     }
   }
 }

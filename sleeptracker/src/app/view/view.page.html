@@ -40,7 +40,7 @@
                 </ion-card-content>
                 <ion-button *ngIf="!delete" fill="clear" color="danger" (click)="confirmDelete(d)">Delete</ion-button>
                 <ion-button *ngIf="delete" fill="clear" color="danger" (click)="modal.dismiss(); remove(d)">Delete</ion-button>
-                <ion-button fill="clear" color="success" (click)="modal.dismiss(); turnOffDel()">Close</ion-button>
+                <ion-button fill="clear" color="dark" (click)="modal.dismiss(); turnOffDel()">Close</ion-button>
               </ion-card>
             </ng-template>
           </ion-modal>
@@ -77,8 +77,7 @@
         </ion-card-content>
       </ion-card>
     </ion-list>
-    <!-- For testing purposes -->
-    <ion-button (click)="clear()">Clear Data</ion-button>
+    <ion-button expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
   </div>  
 </ion-content>
 
