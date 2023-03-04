@@ -77,11 +77,15 @@
         </ion-card-content>
       </ion-card>
     </ion-list>
-    <ion-button expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
+    <!-- <ion-button expand="block" (click)="confirmClear()">Clear All Logs</ion-button> -->
   </div>  
 </ion-content>
 
 <ion-footer [translucent]="true">
+  <div *ngIf="sleepData.length != 0">
+    <ion-button color="danger" expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
+    <br>
+  </div>
   <ion-toolbar>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
