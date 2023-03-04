@@ -76,10 +76,22 @@
     </ion-list>
     <!-- <ion-button expand="block" (click)="confirmClear()">Clear All Logs</ion-button> -->
   </div>  
+  <!-- <div *ngIf="sleepData.length != 0">
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="confirmClear()">
+        <ion-icon name="trash-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div> -->
+    
 </ion-content>
 <ion-footer [translucent]="true">
-  <div id="container" *ngIf="sleepData.length != 0">
-    <ion-button color="danger" expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
-    <br><br><br>
+  <div *ngIf="sleepData.length != 0">
+    <!-- <ion-button color="danger" expand="block" (click)="confirmClear()">Clear All Logs</ion-button> -->
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button size="small" color="danger" (click)="confirmClear()">
+        <ion-icon name="trash-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-footer>
