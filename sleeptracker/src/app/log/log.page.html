@@ -88,8 +88,8 @@
     <div *ngIf="logOvernightSleep">
       <ion-row>LOG OVERNIGHT SLEEP (TEMPORARY)</ion-row>
       <ion-row class="ion-text-center">
-        <ion-col><ion-button (click)="logFull(true)">Log Full</ion-button></ion-col>
-        <ion-col><ion-button (click)="startLog()">Start Log</ion-button></ion-col>
+        <ion-col><ion-button (click)="logFull(!fullStart)">Log Full</ion-button></ion-col>
+        <ion-col><ion-button (click)="startLog();logFull(false)">Start Log</ion-button></ion-col>
       </ion-row>
       <div *ngIf="fullStart">
         <ion-row>
