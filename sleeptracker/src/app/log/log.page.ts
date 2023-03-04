@@ -36,6 +36,7 @@ export class LogPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.sleepData);
   }
   // WILL CONDENSE ALL THIS LATER
   sleepinessClick(){

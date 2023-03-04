@@ -13,8 +13,9 @@
       </ion-col>
     </ion-row>
     <div *ngIf="logSleepiness">
-      <ion-row>LOG SLEEPINESS (TEMPORARY)</ion-row>
-      <ion-row>Choose a value based on how you feel</ion-row>
+      <br>
+      <h5 class="range"><em>Choose a value based on how you feel</em></h5>
+      <p class="instructions"><strong>Use the slider to choose what best fits your current mood</strong></p>
       <ion-row>
         <ion-range [ticks] = "true" [snaps] = "true" [pin] = "true" min = "1" max = "7"[(ngModel)] = "sleepinessRangeVal"></ion-range>
       </ion-row>
@@ -24,6 +25,11 @@
         </ion-label>
       </ion-row>
       <br>
+      <p class="instructions"><strong>
+        Now enter the log datetime. Press confirm to confirm your selection. If you want to change your 
+        selection simply go back and change it before pressing confirm again to save your selection.
+        Press reset if you want to reset everything back to the current datetime.
+      </strong></p>
       <ion-row>
         <ion-item>
           <!-- <ion-label>Enter date</ion-label> -->
@@ -38,13 +44,21 @@
           </ion-datetime>
         </ion-item>
       </ion-row>
+      <br>
       <ion-row *ngIf="confirmation" class="ion-text-center">
+        <br>
+        <p class="instructions"><strong>
+          Press log to see a preview of what your log would consists of. Press cancel to exit if you don't wish to save the log.
+        </strong></p>
         <ion-col><ion-button color="danger" (click) = "sleepinessCancel(); showConfirmation(false)">Cancel</ion-button></ion-col>
-        <!-- <ion-col><ion-button color="success" (click) = "sleepinessPopoverTrigger()">Log</ion-button></ion-col> -->
         <ion-col><ion-button color="success" id="open-modal" (click) = "createSleepinessData()">Log</ion-button></ion-col>
         <ion-modal #modal trigger="open-modal" >
           <ng-template>
             <ion-content>
+              <br>
+              <p class="instructions"><strong>
+                Press confirm to save the log. Press cancel if you would like to go back and make any changes.
+              </strong></p>
               <ion-card>
                 <ion-card-header>
                   <ion-card-title>Log Sleepiness</ion-card-title>
