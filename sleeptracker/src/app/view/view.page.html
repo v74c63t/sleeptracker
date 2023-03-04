@@ -23,7 +23,7 @@
     <p>
       There are currently no saved logs
       <br>
-      You can start creating logs in the <a href="/log">log <ion-icon name="arrow-redo-outline"></ion-icon></a> tab
+      You can start creating logs in the <a href="/tabs/log">log <ion-icon name="arrow-redo-outline"></ion-icon></a> tab
     </p>
   </div>
   <div *ngIf="sleepData.length != 0">
@@ -90,3 +90,7 @@
     <!-- <ion-button expand="block" (click)="confirmClear()">Clear All Logs</ion-button> -->
   </div>  
 </ion-content>
+<ion-footer>
+  <ion-button color="danger" expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
+  <br>
+</ion-footer>
