@@ -50,12 +50,11 @@
         <ion-card-header>
           <ion-card-title>Overnight Log</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content id="open-modal{{i}}">
           {{d.dateString()}}
           <br>
           {{d.summaryString()}}
           <br>
-          <ion-button id="open-modal{{i}}">View more</ion-button>
           <ion-modal #modal trigger="open-modal{{i}}">
             <ng-template>
               <ion-card>
@@ -69,8 +68,9 @@
                   <br>
                   {{d.summaryString()}}
                 </ion-card-content>
-                <ion-button fill="clear" color="danger" (click)="modal.dismiss(); remove(d)">Delete</ion-button>
-                <ion-button fill="clear" color="success" (click)="modal.dismiss()">Done</ion-button>
+                <ion-button *ngIf="!delete" fill="clear" color="danger" (click)="confirmDelete(d)">Delete</ion-button>
+                <ion-button *ngIf="delete" fill="clear" color="danger" (click)="modal.dismiss(); remove(d)">Delete</ion-button>
+                <ion-button fill="clear" color="dark" (click)="modal.dismiss(); turnOffDel()">Close</ion-button>
               </ion-card>
             </ng-template>
           </ion-modal>

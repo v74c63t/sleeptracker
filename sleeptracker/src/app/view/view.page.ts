@@ -86,7 +86,7 @@ export class ViewPage implements OnInit {
       message: 'Logs cannot be recovered once deleted. If you are sure press delete again after closing the alert.',
       buttons: [
         {
-          text: 'Ok',
+          text: 'Close',
           role: 'delete'
         }
       ]
