@@ -78,7 +78,7 @@
   </div>  
 </ion-content>
 <ion-footer>
-  <div id="container" *ngIf="sleepData.length == 0">
+  <div id="container" *ngIf="sleepData.length != 0">
     <ion-button color="danger" expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
     <br>
   </div>
