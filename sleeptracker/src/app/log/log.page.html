@@ -1,3 +1,13 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Log</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content> -->
+
 <ion-header>
   <ion-toolbar>
     <ion-title>Log Sleep</ion-title>
@@ -5,10 +15,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <!-- <ion-item>
     <ion-button href="/home">Home</ion-button>
     <ion-button href="/view">View</ion-button>
-  </ion-item>
+  </ion-item> -->
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -171,25 +181,3 @@
     </div>
   </ion-grid>
 </ion-content>
-
-<ion-footer [translucent]="true">
-  <ion-toolbar>
-    <ion-tabs>
-      <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
-          <ion-icon name="home"></ion-icon>
-          Home
-        </ion-tab-button>
-        <ion-tab-button tab="log">
-          <ion-icon name="stopwatch"></ion-icon>
-          Log
-        </ion-tab-button>
-        <ion-tab-button tab="view">
-          <ion-icon name="today"></ion-icon>
-          View
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-toolbar>
-</ion-footer>

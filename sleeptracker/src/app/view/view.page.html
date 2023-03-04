@@ -1,3 +1,13 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>View</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content> -->
+
 <ion-header>
   <ion-toolbar>
     <ion-title>View</ion-title>
@@ -5,10 +15,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <!-- <ion-item>
     <ion-button href="/home">Home</ion-button>
     <ion-button href="/log">Log</ion-button>
-  </ion-item>
+  </ion-item> -->
   <div id="container" *ngIf="sleepData.length == 0">
     <p>
       There are currently no saved logs
@@ -80,29 +90,3 @@
     <!-- <ion-button expand="block" (click)="confirmClear()">Clear All Logs</ion-button> -->
   </div>  
 </ion-content>
-
-<ion-footer [translucent]="true">
-  <div *ngIf="sleepData.length != 0">
-    <ion-button color="danger" expand="block" (click)="confirmClear()">Clear All Logs</ion-button>
-    <br>
-  </div>
-  <ion-toolbar>
-    <ion-tabs>
-      <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
-          <ion-icon name="home"></ion-icon>
-          Home
-        </ion-tab-button>
-        <ion-tab-button tab="log">
-          <ion-icon name="stopwatch"></ion-icon>
-          Log
-        </ion-tab-button>
-        <ion-tab-button tab="view">
-          <ion-icon name="today"></ion-icon>
-          View
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-toolbar>
-</ion-footer>

@@ -7,24 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: ViewPage
-  },
-  // {
-  //   path: 'home',
-  //   //loadChildren: () => import('src/app/home/home.module').then( m => m.HomePageModule)
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'log',
-  //   //loadChildren: () => import('src/app/log/log.module').then( m => m.LogPageModule)
-  //   redirectTo: 'log',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'view',
-  //   redirectTo: 'view',
-  //   pathMatch: 'full'
-  // }
+  }
 ];
 
 @NgModule({
