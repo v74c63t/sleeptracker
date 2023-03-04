@@ -48,11 +48,11 @@
           </ion-modal>
         </ion-card-content>
       </ion-card>
-      <ion-card *ngIf="d.type == 'Overnight'" color="light">
+      <ion-card *ngIf="d.type == 'Overnight'" color="light" id="open-modal{{i}}">
         <ion-card-header>
           <ion-card-title>Overnight Log</ion-card-title>
         </ion-card-header>
-        <ion-card-content id="open-modal{{i}}">
+        <ion-card-content>
           {{d.dateString()}}
           <br>
           {{d.summaryString()}}
