@@ -37,15 +37,20 @@ export class LogPage implements OnInit {
 
   ngOnInit() {
     console.log(this.sleepData);
+    var state = JSON.parse(localStorage.getItem('started')||"null");
+    if(state != null) {
+      this.started = state;
+    }
   }
   // WILL CONDENSE ALL THIS LATER
   sleepinessClick(){
     this.logSleepiness = !this.logSleepiness;
     this.resetSleepiness();
     this.showConfirmation(false);
+    this.logOvernightSleep = false;
   }
   sleepinessCancel(){
-    this.logSleepiness = false;
+    // this.logSleepiness = false;
     this.resetSleepiness();
     this.showConfirmation(false);
   }
@@ -64,8 +69,9 @@ export class LogPage implements OnInit {
     this.fullStart = false; 
     this.overnightLog = false;
     this.confirmation = false;
-    this.started = false;
-    this.startLogTime = this.resetDate;
+    this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+    // this.started = false;
+    // this.startLogTime = this.resetDate;
     this.endLogTime = this.resetDate;
   }
   resetCalStartDate(){
@@ -78,6 +84,7 @@ export class LogPage implements OnInit {
   }
   overnightClick() {
     this.logOvernightSleep = !this.logOvernightSleep;
+    this.logSleepiness = false;
   }
   createSleepinessData() {
     this.data = new StanfordSleepinessData(this.sleepinessRangeVal, new Date(this.sleepinessDate)); 
@@ -98,14 +105,22 @@ export class LogPage implements OnInit {
   logFullEnd(state:boolean) {
     this.fullEnd = state;
   }
-  startLog() {
-    this.overnightLog = !this.overnightLog;
-    this.started = false;
+  startLog(state:boolean) {
+    this.overnightLog = state;
+    // this.started = false;
     this.endDate = false;
     this.done = false;
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
-    this.startLogTime = this.resetDate;
-    this.endLogTime =this.resetDate;
+    var s = JSON.parse(localStorage.getItem('startDate')||"null");
+    if(s != null) {
+      this.startLogTime = s;
+    }
+    else {
+      this.startLogTime = this.resetDate;
+    }
+    localStorage.setItem('startDate', JSON.stringify(this.startLogTime));
+    // // this.startLogTime = this.resetDate;
+    // this.endLogTime =this.resetDate;
   }
   createOvernightData(start:string, end:string) {
     console.log(start);
@@ -141,17 +156,24 @@ export class LogPage implements OnInit {
   endDateTimeString() {
     return this.data.dateTimeString().substring(this.data.dateTimeString().search("\n")+1,);
   }
-  printDate() {
-    console.log(this.overnightStart);
-    console.log(this.overnightEnd);
-    console.log(this.fullStart);
-    console.log(this.fullEnd);
-  }
+  // printDate() {
+  //   console.log(this.overnightStart);
+  //   console.log(this.overnightEnd);
+  //   console.log(this.fullStart);
+  //   console.log(this.fullEnd);
+  // }
   showConfirmation(state:boolean) {
     this.confirmation = state;
   }
-  start() {
-    this.started = true;
+  start(state:boolean) {
+    this.started = state;
+    localStorage.setItem('started', JSON.stringify(this.started));
+    if(state == false) {
+      this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+      this.startLogTime = this.resetDate;
+      this.endLogTime =this.resetDate;
+      localStorage.removeItem('startDate');
+    }
   }
   end() {
     this.endLogTime = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
