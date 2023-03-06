@@ -24,8 +24,8 @@
     </ion-row>
     <div *ngIf="logSleepiness">
       <br>
-      <h5 class="range"><em>Choose a value based on how you feel</em></h5>
-      <p class="instructions"><strong>Use the slider to choose what best fits your mood</strong></p>
+      <!-- <h5 class="range"><em>Choose a value based on how you feel</em></h5> -->
+      <p class="range"><strong>Use the slider to choose what best fits your mood</strong></p>
       <ion-row>
         <ion-range [ticks] = "true" [snaps] = "true" [pin] = "true" min = "1" max = "7"[(ngModel)] = "sleepinessRangeVal"></ion-range>
       </ion-row>
