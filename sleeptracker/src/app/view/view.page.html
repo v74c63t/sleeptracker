@@ -41,9 +41,9 @@
                   <ion-card-title>Sleepiness Log</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                  {{d.dateTimeString()}}
+                  Date Time: {{d.dateTimeString()}}
                   <br>
-                  {{d.summaryString()}}
+                  Summary: {{d.summaryString()}}
                 </ion-card-content>
                 <ion-button *ngIf="!delete" fill="clear" color="danger" (click)="confirmDelete(d)">Delete</ion-button>
                 <ion-button *ngIf="delete" fill="clear" color="danger" (click)="modal.dismiss(); remove(d)">Delete</ion-button>
@@ -73,7 +73,7 @@
                   <br>
                   {{endDateTimeString(d)}}
                   <br>
-                  {{d.summaryString()}}
+                  Duration: {{d.summaryString()}}
                 </ion-card-content>
                 <ion-button *ngIf="!delete" fill="clear" color="danger" (click)="confirmDelete(d)">Delete</ion-button>
                 <ion-button *ngIf="delete" fill="clear" color="danger" (click)="modal.dismiss(); remove(d)">Delete</ion-button>
