@@ -163,8 +163,8 @@
           if you leave the log tab). Press cancel if you like to exit and discard the log.
         </strong></p></ion-item>
         <ion-grid>
+          <ion-item class="ion-text-center" lines="none"><strong>Start Date Time</strong></ion-item>
           <ion-row>
-            <ion-label><strong>Start Date Time</strong></ion-label>
             <ion-item lines="none">
               <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true" [(ngModel)]=startLogTime></ion-datetime>
             </ion-item>
@@ -176,14 +176,14 @@
           </ion-row>
           <br>
           <div *ngIf="endDate">
+            <ion-item class="ion-text-center" lines="none"><strong>End Date Time</strong></ion-item>
             <ion-row>
-              <ion-label><strong>End Date Time</strong></ion-label>
               <ion-item lines="none">
                 <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true"[(ngModel)]=endLogTime></ion-datetime>
               </ion-item>
             </ion-row>
             <ion-row class="ion-text-center">
-              <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
+              <ion-item class="ion-item-border top-margin" color="light"><p class="instructions"><strong>
                 Press log to see a preview of what your log would consists of. Press cancel to resume the log time.
               </strong></p></ion-item>
               <ion-col><ion-button color="danger" (click) = "showEndDate(); isDone()">Cancel</ion-button></ion-col>
