@@ -108,7 +108,6 @@
               <span slot="title">Enter Log Start Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalStartDate()">Reset</ion-button>
-                <!-- <ion-button color="primary" (click)="datetime.cancel(); resetCalStartDate(); logFull(false)">Cancel</ion-button> -->
                 <ion-button color="primary" (click)="datetime.confirm(); logFullEnd(true)">Confirm</ion-button>
               </ion-buttons>
             </ion-datetime>

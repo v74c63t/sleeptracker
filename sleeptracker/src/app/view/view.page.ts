@@ -19,28 +19,12 @@ export class ViewPage implements OnInit {
   ngOnInit() {
     var data = JSON.parse(localStorage.getItem('SleepData')||"null");
     console.log(data);
-    //FIGURE OUT HOW TO GET THE DATA
-    // console.log(data);
-    // console.log(data[0].type);
-    // // console.log()
-    // console.log(typeof(data));
     if(data != null) {
       this.convert(data);
     }
-      
-    // console.log(this.sleepData);
   }
   convert(data:any[]) {
-    console.log("hello?")
-    console.log(data.length);
     for(var i=0; i< data.length; i++) {
-      console.log(data[i].type);
-      console.log(data[i].type.valueOf() === "Stanford");
-      // console.log(typeof(data[i].type), typeof("Stanford"));
-    //   for (var index = 0; index < data[i].type.length; ++index) {
-    //     console.log("char " + index + ": " + data[i].type.charCodeAt(index));
-    //     console.log("char " + index + ": " + "Stanford".charCodeAt(index));
-    // }
       if(data[i].type === "Stanford") {
         console.log("in");
         this.sleepData.push(new StanfordSleepinessData(data[i].loggedValue, new Date(data[i].loggedAt)));
@@ -65,12 +49,10 @@ export class ViewPage implements OnInit {
   }
   remove(data:SleepData) {
     var i = this.getDataIndex(data);
-    console.log(i);
     if(i != -1) {
       this.sleepData.splice(i, 1);
       localStorage.setItem("SleepData", JSON.stringify(this.sleepData));
     }
-    console.log(this.sleepData);
     this.delete = false;
   }
   startDateTimeString(data:SleepData) {

@@ -42,7 +42,6 @@ export class LogPage implements OnInit {
       this.started = state;
     }
   }
-  // WILL CONDENSE ALL THIS LATER
   sleepinessClick(){
     this.logSleepiness = !this.logSleepiness;
     this.resetSleepiness();
@@ -50,7 +49,6 @@ export class LogPage implements OnInit {
     this.logOvernightSleep = false;
   }
   sleepinessCancel(){
-    // this.logSleepiness = false;
     this.resetSleepiness();
     this.showConfirmation(false);
   }
@@ -70,8 +68,6 @@ export class LogPage implements OnInit {
     this.overnightLog = false;
     this.confirmation = false;
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
-    // this.started = false;
-    // this.startLogTime = this.resetDate;
     this.endLogTime = this.resetDate;
   }
   resetCalStartDate(){
@@ -92,13 +88,6 @@ export class LogPage implements OnInit {
   deleteData() {
     this.data = new SleepData;
   }
-  // sleepiness() {
-  //   // this.data = new StanfordSleepinessData(this.sleepinessRangeVal); 
-  //   this.sleepData.push(this.data);
-  //   console.log(this.data.summaryString());
-  //   console.log(this.sleepData.length);
-  //   console.log(this.sleepinessDate);
-  // }
   logFull(state:boolean){
     this.fullStart = state;
     if(state==true) {
@@ -110,7 +99,6 @@ export class LogPage implements OnInit {
   }
   startLog(state:boolean) {
     this.overnightLog = state;
-    // this.started = false;
     this.endDate = false;
     this.done = false;
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
@@ -122,8 +110,6 @@ export class LogPage implements OnInit {
       this.startLogTime = this.resetDate;
     }
     localStorage.setItem('startDate', JSON.stringify(this.startLogTime));
-    // // this.startLogTime = this.resetDate;
-    // this.endLogTime =this.resetDate;
   }
   createOvernightData(start:string, end:string) {
     console.log(start);
@@ -159,12 +145,6 @@ export class LogPage implements OnInit {
   endDateTimeString() {
     return this.data.dateTimeString().substring(this.data.dateTimeString().search("\n")+1,);
   }
-  // printDate() {
-  //   console.log(this.overnightStart);
-  //   console.log(this.overnightEnd);
-  //   console.log(this.fullStart);
-  //   console.log(this.fullEnd);
-  // }
   showConfirmation(state:boolean) {
     this.confirmation = state;
   }
