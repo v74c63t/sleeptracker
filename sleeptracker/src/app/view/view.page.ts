@@ -17,12 +17,13 @@ export class ViewPage implements OnInit {
   constructor(private alertController: AlertController){}
 
   ngOnInit() {
+    // get the sleep data from local storage and convert it to its respective data
     var data = JSON.parse(localStorage.getItem('SleepData')||"null");
-    console.log(data);
     if(data != null) {
       this.convert(data);
     }
   }
+  // converts sleep data to either Standford/Overnight data
   convert(data:any[]) {
     for(var i=0; i< data.length; i++) {
       if(data[i].type === "Stanford") {
@@ -35,10 +36,14 @@ export class ViewPage implements OnInit {
       }
     }
   }
+
+  // clears the local storage/all the logs
   clear() {
     localStorage.clear();
     this.sleepData = [];
   }
+
+  // get data id
   getDataIndex(data:SleepData) {
     for(var i = 0; i < this.sleepData.length; i++) {
       if(data.id == this.sleepData[i].id) {
@@ -47,6 +52,8 @@ export class ViewPage implements OnInit {
     }
     return -1;
   }
+
+  // remove data from list
   remove(data:SleepData) {
     var i = this.getDataIndex(data);
     if(i != -1) {
@@ -55,15 +62,23 @@ export class ViewPage implements OnInit {
     }
     this.delete = false;
   }
+
+  //parse start time from dateTimeString()
   startDateTimeString(data:SleepData) {
     return data.dateTimeString().substring(0,data.dateTimeString().search("\n"))
   }
+
+  //parse end time from dateTimeString()
   endDateTimeString(data:SleepData) {
     return data.dateTimeString().substring(data.dateTimeString().search("\n")+1,);
   }
+
+  // toggles delete off for a button
   turnOffDel() {
     this.delete = false;
   }
+
+  // sends alert to confirm that user wants to delete a log
   async confirmDelete(data:SleepData) {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
@@ -81,6 +96,8 @@ export class ViewPage implements OnInit {
       this.delete = true; 
     }
   }
+
+  // sends alert to confirm that user wants to clear a log
   async confirmClear() {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
