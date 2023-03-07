@@ -22,7 +22,7 @@ export class LogPage implements OnInit {
   addedDate:boolean = false;
   sleepData:SleepData[] = [];
   overnightStart:string = this.resetDate;
-  overnightEnd:string = this.resetDate;
+  overnightEnd:string = this.overnightStart;
   fullStart:boolean = false;
   fullEnd:boolean = false;
   overnightLog:boolean = false;
@@ -36,7 +36,6 @@ export class LogPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.sleepData);
     var state = JSON.parse(localStorage.getItem('started')||"null");
     if(state != null) {
       this.started = state;
@@ -73,10 +72,11 @@ export class LogPage implements OnInit {
   resetCalStartDate(){
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
     this.overnightStart = this.resetDate;
+    this.overnightEnd = this.overnightStart;
   }
   resetCalEndDate(){
-    this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
-    this.overnightEnd = this.resetDate;
+    // this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+    this.overnightEnd = this.overnightStart;
   }
   overnightClick() {
     this.logOvernightSleep = !this.logOvernightSleep;
@@ -90,9 +90,6 @@ export class LogPage implements OnInit {
   }
   logFull(state:boolean){
     this.fullStart = state;
-    if(state==true) {
-      this.overnightEnd = this.overnightStart;
-    }
   }
   logFullEnd(state:boolean) {
     this.fullEnd = state;
@@ -109,11 +106,8 @@ export class LogPage implements OnInit {
     else {
       this.startLogTime = this.resetDate;
     }
-    localStorage.setItem('startDate', JSON.stringify(this.startLogTime));
   }
   createOvernightData(start:string, end:string) {
-    console.log(start);
-    console.log(end);
     this.data = new OvernightSleepData(new Date(start), new Date(end));
   }
   convert(storage:any[]) {
@@ -134,10 +128,7 @@ export class LogPage implements OnInit {
       }
     }
     this.sleepData.push(this.data);
-    console.log(this.data.summaryString());
-    console.log(this.sleepData.length);
     localStorage.setItem('SleepData', JSON.stringify(this.sleepData))
-    // console.log(this.sleepinessDate);
   }
   startDateTimeString() {
     return this.data.dateTimeString().substring(0,this.data.dateTimeString().search("\n"))
@@ -149,6 +140,7 @@ export class LogPage implements OnInit {
     this.confirmation = state;
   }
   start(state:boolean) {
+    localStorage.setItem('startDate', JSON.stringify(this.startLogTime));
     this.started = state;
     localStorage.setItem('started', JSON.stringify(this.started));
     if(state == false) {
@@ -156,6 +148,7 @@ export class LogPage implements OnInit {
       this.startLogTime = this.resetDate;
       this.endLogTime =this.resetDate;
       localStorage.removeItem('startDate');
+      localStorage.removeItem('started');
     }
   }
   end() {
