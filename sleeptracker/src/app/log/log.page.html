@@ -12,9 +12,11 @@
     <ion-label><ion-button href="/view">View</ion-button></ion-label>
   </ion-item> -->
   <div *ngIf="started">
-    <p class="note">Note: There is a currently a running log that has not been stopped. If you would like to end the log or cancel it,
+    <!-- <p class="note">Note: There is a currently a running log that has not been stopped. If you would like to end the log or cancel it,
       go to Start Log under Log Overnight Sleep.
-    </p>
+    </p> -->
+    <ion-item class="ion-item-border top-margin"color="light" shape="round"><ion-note class="note" color="warning">Note: There is a currently a running log that has not been stopped. 
+      If you would like to end the log or cancel it, go to Start Log under Log Overnight Sleep.</ion-note></ion-item>
   </div>
   <ion-grid>
     <ion-row>
@@ -25,23 +27,26 @@
     <div *ngIf="logSleepiness">
       <br>
       <!-- <h5 class="range"><em>Choose a value based on how you feel</em></h5> -->
-      <p class="range"><strong>Use the slider to choose what best fits your mood</strong></p>
+      <ion-item class="ion-item-border" color="light"><p class="range"><strong>Use the slider to choose what best fits your mood</strong></p></ion-item>
       <ion-row>
         <ion-range [ticks] = "true" [snaps] = "true" [pin] = "true" min = "1" max = "7"[(ngModel)] = "sleepinessRangeVal"></ion-range>
       </ion-row>
       <ion-row>
         <ion-label *ngFor="let val of ScaleValues; index as i">
-          <span *ngIf="i == sleepinessRangeVal">{{i}}: {{val}}</span>
+          <span *ngIf="i == sleepinessRangeVal"><ion-item class="ion-text-center ion-item-border" lines="full" shape="round">
+            {{i}}: {{val}}
+          </ion-item></span>
         </ion-label>
       </ion-row>
       <br>
-      <p class="instructions"><strong>
+      <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
         Press confirm to save your selection. If you want to change your 
         selection, go back and change it before pressing confirm again.
         Press reset if you want to reset everything back to the current datetime.
-      </strong></p>
+      </strong></p></ion-item>
+      <br>
       <ion-row>
-        <ion-item>
+        <ion-item lines="none">
           <!-- <ion-label>Enter date</ion-label> -->
           <!-- <ion-input placeholder="Enter date"></ion-input> -->
           <ion-datetime #datetime [(ngModel)] = "sleepinessDate">
@@ -57,16 +62,16 @@
       <br>
       <ion-row *ngIf="confirmation" class="ion-text-center">
         <br>
-        <p class="instructions"><strong>
+        <ion-item color="light" class="ion-item-border"><p class="instructions"><strong>
           Press log to see a preview of what your log would consists of. Press cancel to exit if you don't wish to save the log.
-        </strong></p>
+        </strong></p></ion-item>
         <ion-col><ion-button color="danger" (click) = "sleepinessCancel(); sleepinessClick(); showConfirmation(false)">Cancel</ion-button></ion-col>
         <ion-col><ion-button color="success" id="open-modal" (click) = "createSleepinessData()">Log</ion-button></ion-col>
         <ion-modal #modal trigger="open-modal" >
           <ng-template>
             <ion-content>
               <br>
-              <ion-item><p class="instructions"><strong>
+              <ion-item color="tertiary" class="ion-item-border"><p class="instructions"><strong>
                 Press confirm to save the log. Press cancel if you would like to go back and make any changes.
               </strong></p></ion-item>
               <ion-card>
@@ -91,23 +96,26 @@
       </ion-col>
     </ion-row>
     <div *ngIf="logOvernightSleep">
-      <ion-row><p class="instructions"><strong>There are two options to log overnight sleep that you may choose from.
+      <ion-row><ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
+        There are two options to log overnight sleep that you may choose from.
         You can choose to log your full sleep after sleeping or start a log before you sleep and end it afterwards.
-      </strong></p></ion-row>
+      </strong></p></ion-item></ion-row>
       <ion-row class="ion-text-center">
         <ion-col><ion-button (click)="logFull(!fullStart); logFullEnd(false); startLog(false)">Log Full</ion-button></ion-col>
         <ion-col><ion-button (click)="startLog(!overnightLog);logFull(false); logFullEnd(false)">Start Log</ion-button></ion-col>
       </ion-row>
       <div *ngIf="fullStart">
         <br>
-        <p class="instructions"><strong>
+        <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
           Press confirm to save your selection. If you want to change your 
           selection, go back and change it before pressing confirm again.
           Press reset if you want to reset everything back to the current datetime.
-          (Start datetime can still be changed after end datetime is inputted)
-        </strong></p>
+          (Start datetime can still be changed after end datetime prompt appears, but 
+          do note you will have to reinput the end datetime)
+        </strong></p></ion-item>
+        <br>
         <ion-row>
-          <ion-item>
+          <ion-item class="ion-item-border" lines="none">
             <ion-datetime #datetime [(ngModel)] = "overnightStart">
               <span slot="title">Enter Log Start Date and Time</span>
               <ion-buttons slot="buttons">
@@ -122,8 +130,8 @@
       <br>
       <div *ngIf="fullEnd">
         <ion-row>
-          <ion-item>
-            <ion-datetime #datetime [(ngModel)] = "overnightEnd">
+          <ion-item class="ion-item-border" lines="none">
+            <ion-datetime #datetime [min]="overnightStart" [value]="overnightStart" [(ngModel)] = "overnightEnd">
               <span slot="title">Enter Log End Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalEndDate()">Reset</ion-button>
@@ -135,9 +143,9 @@
         </ion-row>
         <ion-row *ngIf="confirmation" class="ion-text-center">
           <br>
-          <p class="instructions"><strong>
+          <ion-item color="light" class="ion-item-border"><p class="instructions"><strong>
             Press log to see a preview of what your log would consists of. Press cancel to exit if you don't wish to save the log.
-          </strong></p>
+          </strong></p></ion-item>
           <ion-col><ion-button color="danger" (click) = "overnightClick(); overnightCancel()">Cancel</ion-button></ion-col>
           <!-- <ion-col><ion-button color="danger" (click) = "showConfirmation(false)">Cancel</ion-button></ion-col> -->
           <ion-col><ion-button color="success" id="open-modal" (click) = "createOvernightData(overnightStart, overnightEnd)">Log</ion-button></ion-col>
@@ -145,7 +153,7 @@
             <ng-template>
               <ion-content>
                 <br>
-                <ion-item><p class="instructions"><strong>
+                <ion-item color="tertiary" class="ion-item-border"><p class="instructions"><strong>
                   Press confirm to save the log. Press cancel if you would like to go back and make any changes.
                 </strong></p></ion-item>
                 <ion-card>
@@ -165,14 +173,16 @@
         </ion-row>
       </div>
       <div *ngIf="overnightLog">
-        <p class="instructions"><strong>
-          Press start to start the log when going to sleep and end when waking up. Press cancel if you like to exit and 
-          discard the log.
-        </strong></p>
+        <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
+          Press start to start the log when going to sleep and end when waking up (the timer will not be stopped even 
+          if you leave the log tab). Press cancel if you like to exit and discard the log.
+        </strong></p></ion-item>
         <ion-grid>
           <ion-row>
             <ion-label><strong>Start Date Time</strong></ion-label>
-            <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true" [(ngModel)]=startLogTime></ion-datetime>
+            <ion-item lines="none">
+              <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true" [(ngModel)]=startLogTime></ion-datetime>
+            </ion-item>
           </ion-row>
           <ion-row class="ion-text-center">
             <ion-col *ngIf="!done"><ion-button color="danger" (click)="startLog(false); start(false)">Cancel</ion-button></ion-col>
@@ -183,13 +193,14 @@
           <div *ngIf="endDate">
             <ion-row>
               <ion-label><strong>End Date Time</strong></ion-label>
-              <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true"[(ngModel)]=endLogTime>
-              </ion-datetime>
+              <ion-item lines="none">
+                <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true"[(ngModel)]=endLogTime></ion-datetime>
+              </ion-item>
             </ion-row>
             <ion-row class="ion-text-center">
-              <p class="instructions"><strong>
+              <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
                 Press log to see a preview of what your log would consists of. Press cancel to resume the log time.
-              </strong></p>
+              </strong></p></ion-item>
               <ion-col><ion-button color="danger" (click) = "showEndDate(); isDone()">Cancel</ion-button></ion-col>
               <ion-col><ion-button color="success" id="open-modal">Log</ion-button></ion-col>
             </ion-row>
@@ -197,7 +208,7 @@
               <ng-template>
                 <ion-content>
                   <br>
-                  <ion-item><p class="instructions"><strong>
+                  <ion-item class="ion-item-border" color="tertiary"><p class="instructions"><strong>
                     Press confirm to save the log. Press cancel if you would like to go back and make any changes.
                   </strong></p></ion-item>
                   <ion-card>

@@ -101,6 +101,9 @@ export class LogPage implements OnInit {
   // }
   logFull(state:boolean){
     this.fullStart = state;
+    if(state==true) {
+      this.overnightEnd = this.overnightStart;
+    }
   }
   logFullEnd(state:boolean) {
     this.fullEnd = state;
