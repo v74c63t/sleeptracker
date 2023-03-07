@@ -1,11 +1,16 @@
 
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>View</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="title" size="large">View Saved Logs</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <div id="container" *ngIf="sleepData.length == 0">
     <p>
       There are currently no saved logs

@@ -1,11 +1,16 @@
 
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Log Sleep</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="title" size="large">Log Sleep</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <div *ngIf="started">
     <ion-item class="ion-item-border top-margin"color="light" shape="round"><ion-note class="note" color="warning">Note: There is a currently a running log that has not been stopped. 
       If you would like to end the log or cancel it, go to Start Log under Log Overnight Sleep.</ion-note></ion-item>
@@ -20,6 +25,7 @@
       </ion-col>
     </ion-row>
     <div *ngIf="logSleepiness">
+      <h2 class="header">Log Sleepiness</h2>
       <br>
       <ion-item class="ion-item-border" color="light"><p class="range"><strong>Use the slider to choose what best fits your mood</strong></p></ion-item>
       <ion-row>
@@ -87,6 +93,7 @@
       </ion-col>
     </ion-row>
     <div *ngIf="logOvernightSleep">
+      <h2 class="header">Log Overnight Sleep</h2>
       <ion-row><ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
         There are two options to log overnight sleep that you may choose from.
         You can choose to log your full sleep after sleeping or start a log before you sleep and end it afterwards.
@@ -96,6 +103,7 @@
         <ion-col><ion-button (click)="startLog(!overnightLog);logFull(false); logFullEnd(false)">Start Log</ion-button></ion-col>
       </ion-row>
       <div *ngIf="fullStart">
+        <h3 class="header">Log Full</h3>
         <br>
         <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
           Press confirm to save your selection. If you want to change your 
@@ -161,12 +169,13 @@
         </ion-row>
       </div>
       <div *ngIf="overnightLog">
+        <h3 class="header">Start Overnight Log</h3>
         <ion-item class="ion-item-border" color="light"><p class="instructions"><strong>
           Press start to start the log when going to sleep and end when waking up (the timer will not be stopped even 
           if you leave the log tab). Press cancel if you like to exit and discard the log.
         </strong></p></ion-item>
         <ion-grid>
-          <ion-item class="ion-text-center" lines="none"><strong>Start Date Time</strong></ion-item>
+          <h4 class="header"><strong>Start Date Time</strong></h4>
           <ion-row>
             <ion-item lines="none">
               <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true" [(ngModel)]=startLogTime></ion-datetime>
@@ -179,7 +188,7 @@
           </ion-row>
           <br>
           <div *ngIf="endDate">
-            <ion-item class="ion-text-center" lines="none"><strong>End Date Time</strong></ion-item>
+            <h4 class="header"><strong>End Date Time</strong></h4>
             <ion-row>
               <ion-item lines="none">
                 <ion-datetime presentation="date-time" [preferWheel]="true" [disabled]="true"[(ngModel)]=endLogTime></ion-datetime>
