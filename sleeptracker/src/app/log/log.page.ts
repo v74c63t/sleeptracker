@@ -85,7 +85,7 @@ export class LogPage implements OnInit {
     this.overnightStart = this.resetDate;
   }
 
-  //reset end time to start date time
+  //reset end time to actual date time
   resetCalEndDate(){
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
     this.overnightEnd = this.resetDate;
