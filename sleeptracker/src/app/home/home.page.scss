@@ -6,6 +6,9 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+
+    margin-left: 10px;
+    margin-right:10px;
   }
   
   #container strong {
@@ -28,4 +31,9 @@
 
   a:link {
     color:white;
+  }
+
+  .p-margin {
+    margin-left: 10px;
+    margin-right:10px;
   }
