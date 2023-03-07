@@ -6,15 +6,7 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-item class="ion-text-center">
-    <ion-label><ion-button href="/home">Home</ion-button></ion-label>
-    <ion-label><ion-button href="/log">Log</ion-button></ion-label>
-    <ion-label><ion-button href="/view">View</ion-button></ion-label>
-  </ion-item> -->
   <div *ngIf="started">
-    <!-- <p class="note">Note: There is a currently a running log that has not been stopped. If you would like to end the log or cancel it,
-      go to Start Log under Log Overnight Sleep.
-    </p> -->
     <ion-item class="ion-item-border top-margin"color="light" shape="round"><ion-note class="note" color="warning">Note: There is a currently a running log that has not been stopped. 
       If you would like to end the log or cancel it, go to Start Log under Log Overnight Sleep.</ion-note></ion-item>
   </div>
@@ -26,14 +18,13 @@
     </ion-row>
     <div *ngIf="logSleepiness">
       <br>
-      <!-- <h5 class="range"><em>Choose a value based on how you feel</em></h5> -->
       <ion-item class="ion-item-border" color="light"><p class="range"><strong>Use the slider to choose what best fits your mood</strong></p></ion-item>
       <ion-row>
         <ion-range [ticks] = "true" [snaps] = "true" [pin] = "true" min = "1" max = "7"[(ngModel)] = "sleepinessRangeVal"></ion-range>
       </ion-row>
       <ion-row>
         <ion-label *ngFor="let val of ScaleValues; index as i">
-          <span *ngIf="i == sleepinessRangeVal"><ion-item class="ion-text-center ion-item-border" lines="full" shape="round">
+          <span *ngIf="i == sleepinessRangeVal"><ion-item class="ion-text-center ion-item-border" lines="full">
             {{i}}: {{val}}
           </ion-item></span>
         </ion-label>
@@ -47,13 +38,10 @@
       <br>
       <ion-row>
         <ion-item lines="none">
-          <!-- <ion-label>Enter date</ion-label> -->
-          <!-- <ion-input placeholder="Enter date"></ion-input> -->
           <ion-datetime #datetime [(ngModel)] = "sleepinessDate">
             <span slot="title">Enter Log Date and Time</span>
             <ion-buttons slot="buttons">
               <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalDate()">Reset</ion-button>
-              <!-- <ion-button color="primary" (click)="datetime.cancel()">Cancel</ion-button> -->
               <ion-button color="primary" (click)="datetime.confirm(); showConfirmation(true)">Confirm</ion-button>
             </ion-buttons>
           </ion-datetime>
@@ -76,7 +64,7 @@
               </strong></p></ion-item>
               <ion-card>
                 <ion-card-header>
-                  <ion-card-title>Log Sleepiness</ion-card-title>
+                  <ion-card-title>Sleepiness Log</ion-card-title>
                   <ion-card-subtitle>DateTime: {{data.dateTimeString()}}</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
@@ -135,7 +123,6 @@
               <span slot="title">Enter Log End Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="datetime.reset(resetDate); resetCalEndDate()">Reset</ion-button>
-                <!-- <ion-button color="primary" (click)="datetime.cancel(); logFullEnd(false); resetCalEndDate(); showConfirmation(false)">Cancel</ion-button> -->
                 <ion-button color="primary" (click)="datetime.confirm(); showConfirmation(true)">Confirm</ion-button>
               </ion-buttons>
             </ion-datetime>
@@ -147,7 +134,6 @@
             Press log to see a preview of what your log would consists of. Press cancel to exit if you don't wish to save the log.
           </strong></p></ion-item>
           <ion-col><ion-button color="danger" (click) = "overnightClick(); overnightCancel()">Cancel</ion-button></ion-col>
-          <!-- <ion-col><ion-button color="danger" (click) = "showConfirmation(false)">Cancel</ion-button></ion-col> -->
           <ion-col><ion-button color="success" id="open-modal" (click) = "createOvernightData(overnightStart, overnightEnd)">Log</ion-button></ion-col>
           <ion-modal #modal trigger="open-modal" >
             <ng-template>
@@ -158,13 +144,13 @@
                 </strong></p></ion-item>
                 <ion-card>
                   <ion-card-header>
-                    <ion-card-title>Log Overnight Sleep</ion-card-title>
+                    <ion-card-title>Overnight Log</ion-card-title>
                     <ion-card-subtitle>{{startDateTimeString()}}<br>{{endDateTimeString()}}</ion-card-subtitle>
                   </ion-card-header>
                   <ion-card-content>
-                    Date: {{data.dateString()}}<br>Summary: {{data.summaryString()}}
+                    Date: {{data.dateString()}}<br>Duration: {{data.summaryString()}}
                   </ion-card-content>
-                  <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
+                  <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData(); showConfirmation(false)">Cancel</ion-button>
                   <ion-button fill="clear" color="success" (click)="modal.dismiss(); addData(); showConfirmation(false); overnightClick(); overnightCancel()">Confirm</ion-button>
                 </ion-card>
               </ion-content>
@@ -219,7 +205,7 @@
                     <ion-card-content>
                       Date: {{data.dateString()}}<br>Summary: {{data.summaryString()}}
                     </ion-card-content>
-                    <ion-button fill="clear" color="danger" (click)="modal.dismiss(); deleteData()">Cancel</ion-button>
+                    <ion-button fill="clear" color="danger" (click)="modal.dismiss();">Cancel</ion-button>
                     <ion-button fill="clear" color="success" (click)="modal.dismiss(); addData(); overnightClick(); overnightCancel(); start(false)">Confirm</ion-button>
                   </ion-card>
                 </ion-content>
