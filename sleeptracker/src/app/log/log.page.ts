@@ -22,7 +22,7 @@ export class LogPage implements OnInit {
   addedDate:boolean = false;
   sleepData:SleepData[] = [];
   overnightStart:string = this.resetDate;
-  overnightEnd:string = this.overnightStart;
+  overnightEnd:string = this.resetDate;
   fullStart:boolean = false;
   fullEnd:boolean = false;
   overnightLog:boolean = false;
@@ -83,13 +83,12 @@ export class LogPage implements OnInit {
   resetCalStartDate(){
     this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
     this.overnightStart = this.resetDate;
-    this.overnightEnd = this.overnightStart;
   }
 
   //reset end time to start date time
   resetCalEndDate(){
-    // this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
-    this.overnightEnd = this.overnightStart;
+    this.resetDate = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+    this.overnightEnd = this.resetDate;
   }
 
   //toggles overnight log

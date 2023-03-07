@@ -110,7 +110,7 @@
           selection, go back and change it before pressing confirm again.
           Press reset if you want to reset everything back to the current datetime.
           (Start datetime can still be changed after end datetime prompt appears, but 
-          do note you will have to <em>reinput/confirm the end datetime again</em>)
+          do note you will have to <em>reinput/confirm the datetime again</em>)
         </strong></p></ion-item>
         <br>
         <ion-row>
@@ -119,7 +119,7 @@
               <span slot="title">Enter Log Start Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="resetCalStartDate(); datetime.reset(resetDate)">Reset</ion-button>
-                <ion-button color="primary" (click)="datetime.confirm(); logFullEnd(true); resetCalEndDate()">Confirm</ion-button>
+                <ion-button color="primary" (click)="datetime.confirm(); logFullEnd(true)">Confirm</ion-button>
               </ion-buttons>
             </ion-datetime>
           </ion-item>
@@ -129,7 +129,7 @@
       <div *ngIf="fullEnd">
         <ion-row>
           <ion-item class="ion-item-border" lines="none">
-            <ion-datetime #datetime id="logFullEndDate" [min]="overnightStart" [(ngModel)] = "overnightEnd">
+            <ion-datetime #datetime id="logFullEndDate" [(ngModel)] = "overnightEnd">
               <span slot="title">Enter Log End Date and Time</span>
               <ion-buttons slot="buttons">
                 <ion-button color="danger" (click)="resetCalEndDate(); datetime.reset(resetDate)">Reset</ion-button>
