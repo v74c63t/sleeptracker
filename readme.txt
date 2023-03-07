@@ -5,17 +5,18 @@
 */20
 - 3/3 The ability to log overnight sleep
 - 3/3 The ability to log sleepiness during the day
-- */3 The ability to view these two categories of logged data
-- */3 Either using a native device resource or backing up logged data
-- */3 Following good principles of mobile design
-- */3 Creating a compelling app
-- */2 A readme and demo video which explains how these features were implemented and their design rationale
+- 3/3 The ability to view these two categories of logged data
+- 3/3 Either using a native device resource or backing up logged data
+- 2/3 Following good principles of mobile design
+- 2/3 Creating a compelling app
+- 2/2 A readme and demo video which explains how these features were implemented and their design rationale
 
 2. How long, in hours, did it take you to complete this assignment?
 before wed: ~5 havent kept track
 wed: 6-8?
 th: 12?
 fri: 16 hrs
+sun: 2 hrs
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 https://ionicframework.com/docs/api/range
@@ -32,46 +33,48 @@ https://ionicframework.com/docs/api/fab
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
-
+We did not consult other classmates or individuals for this assignment.
 
 
 5. Is there anything special we need to know in order to run your code?
-
+There is nothing special that you need to know in order to run the code.
 
 
 --Aim for no more than two sentences for each of the following questions.--
 
 
 6. Did you design your app with a particular type of user in mind? If so, whom?
-
+No, we did not design our app with a particular type of user in mind. 
 
 
 7. Did you design your app specifically for iOS or Android, or both?
-
+The app is mostly designed for iOS.
 
 
 8. How can a person log overnight sleep in your app? Why did you choose to support logging overnight sleep in this way?
-
+They can either input the overnight log all at once by supplying both the start and end times or start a log before sleeping 
+and end the log after they wake up. 
 
 
 9. How can a person log sleepiness during the day in your app? Why did you choose to support logging sleepiness in this way?
-
+They can use a slider to choose a value from the Stanford Sleepiness scale values and input a time for the log.  
 
 
 10. How can a person view the data they logged in your app? Why did you choose to support viewing logged data in this way?
-
+They can view all the log in separate tab with both the sleepiness and overnight data in one list
 
 
 11. Which feature choose--using a native device resource, backing up logged data, or both?
-
+Backing up logged data
 
 
 12. If you used a native device resource, what feature did you add? How does this feature change the app's experience for a user?
-
+N/A
 
 
 13. If you backed up logged data, where does it back up to?
-
+It backs up to local storage.
 
 14. How does your app implement or follow principles of good mobile design?
+There are a lot of confirmation prompts that users go through to ensure that they are satisfied with what they are inputting.
 
