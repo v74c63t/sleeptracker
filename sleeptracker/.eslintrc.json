@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": ["sleeptracker/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
