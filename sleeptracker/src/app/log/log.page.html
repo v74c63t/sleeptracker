@@ -33,7 +33,7 @@
       </ion-row>
       <ion-row>
         <ion-label *ngFor="let val of ScaleValues; index as i">
-          <span *ngIf="i == sleepinessRangeVal"><ion-item class="ion-text-center ion-item-border" lines="full">
+          <span *ngIf="i === sleepinessRangeVal"><ion-item class="ion-text-center ion-item-border" lines="full">
             {{i}}: {{val}}
           </ion-item></span>
         </ion-label>

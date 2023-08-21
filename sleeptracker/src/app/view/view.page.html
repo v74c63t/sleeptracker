@@ -11,21 +11,21 @@
       <ion-title class="title" size="large">View Saved Logs</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div id="container" *ngIf="sleepData.length == 0">
+  <div id="container" *ngIf="sleepData.length === 0">
     <p>
       There are currently no saved logs
       <br>
       You can start creating logs in the <a href="/log">Log <ion-icon name="arrow-redo-outline"></ion-icon></a> tab
     </p>
   </div>
-  <div *ngIf="sleepData.length != 0">
+  <div *ngIf="sleepData.length !== 0">
     <br>
     <ion-item class="ion-item-border" color="light "><p class="instructions"><strong>
       Click on the log to view more detailed information or to delete it.
       You can clear all logs by clicking on the button on the bottom right.
     </strong></p></ion-item>
     <ion-list *ngFor="let d of sleepData; index as i">
-      <ion-card *ngIf="d.type == 'Stanford'" color="light" id="open-modal{{i}}" class="card-margin">
+      <ion-card *ngIf="d.type === 'Stanford'" color="light" id="open-modal{{i}}" class="card-margin">
         <ion-card-header>
           <ion-card-title>Sleepiness Log</ion-card-title>
         </ion-card-header>
@@ -53,7 +53,7 @@
           </ion-modal>
         </ion-card-content>
       </ion-card>
-      <ion-card *ngIf="d.type == 'Overnight'" color="light" id="open-modal{{i}}" class="card-margin">
+      <ion-card *ngIf="d.type === 'Overnight'" color="light" id="open-modal{{i}}" class="card-margin">
         <ion-card-header>
           <ion-card-title>Overnight Log</ion-card-title>
         </ion-card-header>
